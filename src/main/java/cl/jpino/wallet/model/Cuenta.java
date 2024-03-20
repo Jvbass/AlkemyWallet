@@ -1,6 +1,8 @@
 package cl.jpino.wallet.model;
 
-public class Cuenta {
+import cl.jpino.wallet.controller.interfaces.ITransaccion;
+
+public class Cuenta implements ITransaccion {
     private int numeroCuenta;
     private double saldo;
     private Usuario usuario;
@@ -10,9 +12,27 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public int getNumeroCuenta() {
-        return numeroCuenta;
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
 
+    @Override
+    public boolean retirarDinero() {
+        return false;
+    }
+
+    @Override
+    public double ingresarDinero() {
+        return 0;
+    }
+
+    @Override
+    public double consultarSaldo() {
+        return 0;
+    }
 }

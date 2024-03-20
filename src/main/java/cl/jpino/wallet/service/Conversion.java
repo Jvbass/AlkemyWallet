@@ -1,7 +1,8 @@
 package cl.jpino.wallet.service;
 
 public class Conversion {
-    private double cantidad;
+
+    private double cantidad ;
     private double resultado;
     private String moneda; //  USD Euro /
 

@@ -1,6 +1,10 @@
 package cl.jpino.wallet;
 
+import cl.jpino.wallet.model.Cuenta;
 import cl.jpino.wallet.model.Dolar;
+import cl.jpino.wallet.model.Euro;
+import cl.jpino.wallet.service.Conversion;
+
 
 import java.util.Scanner;
 
@@ -11,10 +15,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String nombre;
         int numeroCuenta =  (int) (Math.random() * 100000000);
-        int saldo;
+        int saldo = 0;
         int monto;
         boolean salir = false;
         boolean volver = false;
+
+
+        Euro euro = new Euro (saldo, "USD");
 
         System.out.println("Bienvenido a tu billetera digital");
         System.out.println("-----------------------------------");
@@ -25,6 +32,7 @@ public class Main {
             nombre = sc.next();
             System.out.println("Ingresa tu saldo inicial");
             saldo = sc.nextInt();
+        //set saldno
         } while (nombre.isEmpty() || saldo == 0);
 
         do {
@@ -73,6 +81,7 @@ public class Main {
                             case 1 -> {
                                 System.out.println("****Saldo en Dolares****");
                                 Dolar dolar = new Dolar (saldo, "USD");
+                                sc.nextLine();
                             }
 
                             case 2 -> {

@@ -8,7 +8,7 @@ public class Dolar extends Conversion {
 
     public Dolar(double cantidad,  String moneda) {
         super(cantidad, moneda);
-        usd = cantidad * VALOR_DOLAR;
+        usd = cantidad / VALOR_DOLAR;
         setResultado(usd);
     }
 }

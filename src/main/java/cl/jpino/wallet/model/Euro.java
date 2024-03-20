@@ -8,7 +8,7 @@ public class Euro extends Conversion {
 
     public Euro(double cantidad,  String moneda) {
         super(cantidad, moneda);
-        euro = cantidad * VALOR_EURO;
+        euro = cantidad / VALOR_EURO;
         setResultado(euro);
     }
 }
