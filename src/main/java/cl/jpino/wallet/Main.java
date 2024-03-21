@@ -1,9 +1,8 @@
 package cl.jpino.wallet;
 
-import cl.jpino.wallet.model.Cuenta;
 import cl.jpino.wallet.model.Dolar;
 import cl.jpino.wallet.model.Euro;
-import cl.jpino.wallet.service.Conversion;
+import cl.jpino.wallet.service.Cuenta;
 
 
 import java.util.Scanner;
@@ -21,6 +20,7 @@ public class Main {
         boolean volver = false;
 
 
+        Cuenta cuenta = new Cuenta(numeroCuenta, saldo);
         Euro euro = new Euro (saldo, "USD");
 
         System.out.println("Bienvenido a tu billetera digital");
@@ -58,6 +58,8 @@ public class Main {
                             case 1 -> {
                                 System.out.println("Ingrese el monto a depositar");
                                 monto = sc.nextInt();
+                                sc.nextLine();
+                                cuenta.ingresarDinero(monto);
                             }
                             //cuentacorriente.depositar(monto);
                             case 2 -> {
