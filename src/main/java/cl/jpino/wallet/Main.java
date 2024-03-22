@@ -29,9 +29,10 @@ public class Main {
             System.out.println("Ingresa tu nombre");
             nombre = sc.next();
             System.out.println("Ingresa tu saldo inicial");
-            cuenta.ingresarDinero(sc.nextDouble());
+            cantidad = sc.nextDouble();
+            cuenta.ingresarDinero(cantidad);
 
-        } while (nombre.isEmpty());
+        } while (nombre.isEmpty() || cantidad <= 0);
 
         do {
         System.out.println("\n");
