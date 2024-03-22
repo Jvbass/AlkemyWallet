@@ -8,23 +8,15 @@ public class Cuenta implements ITransaccion {
     private double saldo;
     private Usuario usuario;
 
-    public Cuenta(int numeroCuenta, double saldo) {
+    public Cuenta(int numeroCuenta, double saldo, Usuario usuario) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
+        this.usuario = usuario;
     }
 
     public Cuenta() {
 
     }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
 
     @Override
     public boolean retirarDinero(double montoRetiro) {
@@ -32,8 +24,7 @@ public class Cuenta implements ITransaccion {
             System.out.println("No tienes saldo suficiente para retirar dinero");
             return false;
         }else {
-            double saldoActual = this.saldo - montoRetiro;
-            setSaldo(saldoActual);
+            this.saldo = this.saldo - montoRetiro;
         }
         System.out.println("Retiro exitoso");
         return true;
@@ -46,14 +37,14 @@ public class Cuenta implements ITransaccion {
             return 0;
         }
             else {
-                double saldoActual = this.saldo + montoIngreso;
-                setSaldo(saldoActual);
+                this.saldo = this.saldo + montoIngreso;
             }
-        return 0;
+        System.out.println("Ingreso exitoso");
+        return this.saldo;
     }
 
     @Override
     public double consultarSaldo() {
-        return this.saldo;
+        return saldo;
     }
 }

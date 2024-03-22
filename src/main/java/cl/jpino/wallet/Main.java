@@ -13,9 +13,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Cuenta cuenta = new Cuenta();
+
+        double saldo = cuenta.consultarSaldo();
         String nombre;
         int numeroCuenta =  (int) (Math.random() * 100000000);
-        double saldo = cuenta.getSaldo();
         double cantidad;
         boolean salir = false;
         boolean volver = false;
@@ -23,7 +24,6 @@ public class Main {
 
         System.out.println("Bienvenido a tu billetera digital");
         System.out.println("-----------------------------------");
-
 
         do {
             System.out.println("Ingresa tu nombre");
@@ -65,11 +65,10 @@ public class Main {
                                 cantidad = sc.nextDouble();
                                 cuenta.retirarDinero(cantidad);
                             }
-                            //saldoSuficiente = validarSaldoSuficiente(saldo, monto);
-                            //cuentacorriente.retirar(monto);
-                            case 3 -> {System.out.println("Saldo actual: " + saldo);}
-                            case 4 -> {volver = true;}
-                            default -> {System.out.println("Opcion no valida");}
+
+                            case 3 -> System.out.println("Saldo actual: " + saldo);
+                            case 4 -> volver = true;
+                            default -> System.out.println("Opcion no valida");
                         }
                     }
                     case 2 -> {
@@ -81,14 +80,14 @@ public class Main {
                         switch (sc.nextInt()) {
                             case 1 -> {
                                 System.out.println("****Saldo en Dolares****");
-                                Dolar dolar = new Dolar (cuenta.getSaldo(), "USD");
+                                Dolar dolar = new Dolar (cuenta.consultarSaldo(), "USD");
                                 dolar.mostrarResultado();//devuelve el saldo en dolares
                                 System.out.println("-----------------------------------");
                             }
 
                             case 2 -> {
                                 System.out.println("****Saldo en Euros****");
-                                Euro euro  = new Euro (saldo, "Euro");
+                                Euro euro  = new Euro (cuenta.consultarSaldo(), "Euro");
                                 euro.mostrarResultado();//devuelve 0.0 ??
                                 System.out.println("-----------------------------------");
                             }
