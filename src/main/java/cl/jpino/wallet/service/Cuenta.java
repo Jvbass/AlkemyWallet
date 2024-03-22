@@ -13,6 +13,10 @@ public class Cuenta implements ITransaccion {
         this.saldo = saldo;
     }
 
+    public Cuenta() {
+
+    }
+
     public double getSaldo() {
         return saldo;
     }
@@ -39,7 +43,8 @@ public class Cuenta implements ITransaccion {
     public double ingresarDinero(double montoIngreso) {
         if (montoIngreso <= 0) {
             System.out.println("No puedes ingresar un monto negativo o igual a 0");
-            return 0;}
+            return 0;
+        }
             else {
                 double saldoActual = this.saldo + montoIngreso;
                 setSaldo(saldoActual);
@@ -49,6 +54,6 @@ public class Cuenta implements ITransaccion {
 
     @Override
     public double consultarSaldo() {
-        return 0;
+        return this.saldo;
     }
 }

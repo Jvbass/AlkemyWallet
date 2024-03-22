@@ -12,16 +12,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Cuenta cuenta = new Cuenta();
         String nombre;
         int numeroCuenta =  (int) (Math.random() * 100000000);
-        int saldo = 0;
-        int monto;
+        double saldo = cuenta.getSaldo();
+        double cantidad;
         boolean salir = false;
         boolean volver = false;
 
-
-        Cuenta cuenta = new Cuenta(numeroCuenta, saldo);
-        Euro euro = new Euro (saldo, "USD");
 
         System.out.println("Bienvenido a tu billetera digital");
         System.out.println("-----------------------------------");
@@ -31,9 +29,9 @@ public class Main {
             System.out.println("Ingresa tu nombre");
             nombre = sc.next();
             System.out.println("Ingresa tu saldo inicial");
-            saldo = sc.nextInt();
-        //set saldno
-        } while (nombre.isEmpty() || saldo == 0);
+            cuenta.ingresarDinero(sc.nextInt());
+
+        } while (nombre.isEmpty());
 
         do {
         System.out.println("\n");
@@ -56,21 +54,21 @@ public class Main {
                         System.out.println("4. Volver al menu principal");
                         switch (sc.nextInt()) {
                             case 1 -> {
-                                System.out.println("Ingrese el monto a depositar");
-                                monto = sc.nextInt();
-                                sc.nextLine();
-                                cuenta.ingresarDinero(monto);
+                                System.out.println("Ingrese la cantidad a depositar");
+                                cantidad = sc.nextInt();
+                                cuenta.ingresarDinero(cantidad);
                             }
                             //cuentacorriente.depositar(monto);
                             case 2 -> {
-                                System.out.println("Ingrese el monto a retirar");
-                                monto = sc.nextInt();
+                                System.out.println("Ingrese la cantidad a retirar");
+                                cantidad = sc.nextInt();
+                                cuenta.retirarDinero(cantidad);
                             }
                             //saldoSuficiente = validarSaldoSuficiente(saldo, monto);
                             //cuentacorriente.retirar(monto);
-                            case 3 -> System.out.println("Saldo actual: " + saldo);
-                            case 4 -> volver = true;
-                            default -> System.out.println("Opcion no valida");
+                            case 3 -> {System.out.println("Saldo actual: " + saldo);}
+                            case 4 -> {volver = true;}
+                            default -> {System.out.println("Opcion no valida");}
                         }
                     }
                     case 2 -> {
@@ -83,12 +81,13 @@ public class Main {
                             case 1 -> {
                                 System.out.println("****Saldo en Dolares****");
                                 Dolar dolar = new Dolar (saldo, "USD");
-                                sc.nextLine();
+                                dolar.mostrarResultado();
                             }
 
                             case 2 -> {
                                 System.out.println("****Saldo en Euros****");
-
+                                Euro euro  = new Euro (saldo, "USD");
+                                euro.mostrarResultado();
                             }
 
                             case 5 -> volver = true;
@@ -98,6 +97,8 @@ public class Main {
                     case 3 -> {
                         System.out.println("Resumen de cuenta");
                         System.out.println("-----------------------------------");
+                        System.out.println("Saldo actual: " + cuenta.consultarSaldo());
+
                     }
                     //cuentacorriente.resumenDeCuenta();
                     case 4 -> salir = true;
