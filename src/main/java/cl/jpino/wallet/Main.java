@@ -29,7 +29,7 @@ public class Main {
             System.out.println("Ingresa tu nombre");
             nombre = sc.next();
             System.out.println("Ingresa tu saldo inicial");
-            cuenta.ingresarDinero(sc.nextInt());
+            cuenta.ingresarDinero(sc.nextDouble());
 
         } while (nombre.isEmpty());
 
@@ -55,13 +55,13 @@ public class Main {
                         switch (sc.nextInt()) {
                             case 1 -> {
                                 System.out.println("Ingrese la cantidad a depositar");
-                                cantidad = sc.nextInt();
+                                cantidad = sc.nextDouble();
                                 cuenta.ingresarDinero(cantidad);
                             }
                             //cuentacorriente.depositar(monto);
                             case 2 -> {
                                 System.out.println("Ingrese la cantidad a retirar");
-                                cantidad = sc.nextInt();
+                                cantidad = sc.nextDouble();
                                 cuenta.retirarDinero(cantidad);
                             }
                             //saldoSuficiente = validarSaldoSuficiente(saldo, monto);
@@ -76,21 +76,23 @@ public class Main {
                         System.out.println("-----------------------------------");
                         System.out.println("1. Ver saldo en dolares");
                         System.out.println("2. Ver saldo en euros");
-                        System.out.println("5. Volver al menu principal");
+                        System.out.println("3. Volver al menu principal");
                         switch (sc.nextInt()) {
                             case 1 -> {
                                 System.out.println("****Saldo en Dolares****");
-                                Dolar dolar = new Dolar (saldo, "USD");
-                                dolar.mostrarResultado();
+                                Dolar dolar = new Dolar (cuenta.getSaldo(), "USD");
+                                dolar.mostrarResultado();//devuelve el saldo en dolares
+                                System.out.println("-----------------------------------");
                             }
 
                             case 2 -> {
                                 System.out.println("****Saldo en Euros****");
-                                Euro euro  = new Euro (saldo, "USD");
-                                euro.mostrarResultado();
+                                Euro euro  = new Euro (saldo, "Euro");
+                                euro.mostrarResultado();//devuelve 0.0 ??
+                                System.out.println("-----------------------------------");
                             }
 
-                            case 5 -> volver = true;
+                            case 3 -> volver = true;
                             default -> System.out.println("Opcion no valida");
                         }
                     }
@@ -104,7 +106,7 @@ public class Main {
                     case 4 -> salir = true;
                     default -> System.out.println("Opcion no valida");
                 }
-            } while (!volver);
+            } while (volver);
 
         } while (!salir);
     }
