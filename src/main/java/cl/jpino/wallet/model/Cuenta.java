@@ -1,4 +1,4 @@
-package cl.jpino.wallet.service;
+package cl.jpino.wallet.model;
 
 import cl.jpino.wallet.controller.interfaces.ITransaccion;
 import cl.jpino.wallet.model.Usuario;

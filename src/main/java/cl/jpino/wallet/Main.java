@@ -2,7 +2,7 @@ package cl.jpino.wallet;
 
 import cl.jpino.wallet.model.Dolar;
 import cl.jpino.wallet.model.Euro;
-import cl.jpino.wallet.service.Cuenta;
+import cl.jpino.wallet.model.Cuenta;
 
 
 import java.util.Scanner;
